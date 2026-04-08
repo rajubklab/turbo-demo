@@ -13,3 +13,7 @@ jobs:
         run: echo ${{ github.repository }}
       - name: Build
         run: ls -al
+      - name: Docker build
+        run: docker build -t turbo-demo:latest -f apps/web/Dockerfile .
+      - name: check docker
+        run: docker images
