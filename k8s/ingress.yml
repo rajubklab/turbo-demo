@@ -10,7 +10,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`turbo-demo.rajubk.com`)
+    - match: Host(`turbo.rajubk.com`)
       kind: Rule
       services:
         - name: turbo-demo-service
