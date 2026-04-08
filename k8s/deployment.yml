@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: turbo-demo
+  labels:
+    app: turbo-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: turbo-demo
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: turbo-demo
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: turbo-demo
+          image: ghcr.io/rajubklab/turbo-demo/web:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: turbo-demo-secrets

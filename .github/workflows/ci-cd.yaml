@@ -19,3 +19,12 @@ jobs:
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           docker build -t $IMAGE_WEB:latest -f apps/web/Dockerfile .
           docker push $IMAGE_WEB:latest
+      - name: Deploy to k3s
+        run: |
+          echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
+          export KUBECONFIG=kubeconfig
+          kubectl set image deployment/web web=$IMAGE_WEB:latest -n default
+      - name: Deploy to K3s
+        run: |
+          kubectl apply -f k8s/
+          kubectl rollout restart deployment/turbo-demo -n default
