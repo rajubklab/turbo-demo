@@ -23,8 +23,5 @@ jobs:
         run: |
           echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
-          kubectl set image deployment/web web=$IMAGE_WEB:latest -n default
-      - name: Deploy to K3s
-        run: |
           kubectl apply -f k8s/
           kubectl rollout restart deployment/turbo-demo -n default
