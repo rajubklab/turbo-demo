@@ -12,4 +12,4 @@ jobs:
       - name: Install dependencies
         run: echo ${{ github.repository }}
       - name: Build
-        run: echo ls -al
+        run: ls -al
