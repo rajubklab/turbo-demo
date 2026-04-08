@@ -22,7 +22,7 @@ jobs:
       - name: Deploy to k3s
         run: |
           echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
-          export KUBECONFIG=kubeconfig
+          export KUBECONFIG=$PWD/kubeconfig
           kubectl set image deployment/web web=$IMAGE_WEB:latest -n default
       - name: Deploy to K3s
         run: |
