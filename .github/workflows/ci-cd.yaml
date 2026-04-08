@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+env:
+  REGISTRY: ghcr.io
+  IMAGE_WEB: ghcr.io/${{ github.repository }}/web
 
 jobs:
   build:
@@ -13,7 +16,7 @@ jobs:
         run: echo ${{ github.repository }}
       - name: Build
         run: ls -al
-      - name: Docker build
-        run: docker build -t turbo-demo:latest -f apps/web/Dockerfile .
-      - name: check docker
-        run: docker images
+      - name: Docker build and push
+        run: |
+          docker build -t $IMAGE_WEB:latest -f apps/web/Dockerfile .
+          docker push $IMAGE_WEB:latest
