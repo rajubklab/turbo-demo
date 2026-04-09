@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "my-mcp-server-1626575d": {
+      "url": "https://mcpserver.rajubk.com/mcp",
+      "type": "http"
+    }
+  },
+  "inputs": []
+}

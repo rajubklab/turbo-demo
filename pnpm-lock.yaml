@@ -27,6 +27,31 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
+  apps/backend:
+    dependencies:
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      next:
+        specifier: 16.2.2
+        version: 16.2.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+    devDependencies:
+      '@types/node':
+        specifier: ^20
+        version: 20.19.39
+      '@types/react':
+        specifier: ^19
+        version: 19.2.14
+      '@workspace/eslint-config':
+        specifier: workspace:^
+        version: link:../../packages/eslint-config
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   apps/mcp-server:
     dependencies:
       '@repo/db':
