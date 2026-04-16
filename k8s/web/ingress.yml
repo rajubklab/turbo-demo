@@ -16,6 +16,6 @@ spec:
         - name: turbo-demo-service
           port: 80
       middlewares:
-        - name: default-headers
+        - name: authentik
   tls:
     secretName: test-rajubk-com-tls
